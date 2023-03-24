@@ -9,9 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CartPage extends BasePage {
+    WebDriver driver;
     ProductPage productPage;
     public CartPage(WebDriver driver) {
         super(driver);
+        this.driver = driver;
         productPage = new ProductPage(driver);
     }
 
@@ -19,6 +21,9 @@ public class CartPage extends BasePage {
     By productsPrice = By.xpath("//td[@class='cart_price']/p");
     By productsQuantity = By.xpath("//button[@class='disabled']");
     By productsTotalPrice = By.xpath("//p[@class='cart_total_price']");
+    By breadcrumbsLable = By.xpath("//div[@class='breadcrumbs']");
+    By checkoutButton = By.xpath("//a[@class='btn btn-default check_out']");
+    By registerLoginButton = By.xpath("//u[normalize-space()='Register / Login']");
 
     public boolean verifyProductInList (String productId)
     {
@@ -59,4 +64,18 @@ public class CartPage extends BasePage {
         }
         return "0";
     }
+
+    public boolean verifyThatCartPageIsDisplayed()
+    {
+        return isDisplayed(breadcrumbsLable);
+    }
+
+    public LoginPage goToLoginPage()
+    {
+        clickElement(checkoutButton);
+        clickElement(registerLoginButton);
+        return new LoginPage(driver);
+    }
+
+
 }

@@ -33,7 +33,7 @@ public class CartTest extends BaseTest {
     }
 
     @Test
-    public void verifyProductQuantityInCart()
+    public void TC13_verifyProductQuantityInCart()
     {
         helper = new Helper(driver);
         homePage = new HomePage(driver);

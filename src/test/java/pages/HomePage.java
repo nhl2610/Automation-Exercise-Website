@@ -18,6 +18,8 @@ public class HomePage extends BasePage {
     By testCasePageLink = By.xpath("//a[normalize-space()='Test Cases']");
     By deleteAccountLink = By.xpath("//a[normalize-space()='Delete Account']");
     By productLink = By.xpath("//a[@href='/products']");
+    By cartLink = By.xpath("//a[@href='/view_cart']");
+
     By username = By.xpath("//i[@class='fa fa-user']//parent::a");
     By footerTitle = By.cssSelector("div[class='single-widget'] h2");
     By susbscribe_email = By.xpath("//input[@id='susbscribe_email']");
@@ -33,6 +35,10 @@ public class HomePage extends BasePage {
     public LoginPage openLoginPage() {
         clickElement(loginLink);
         return new LoginPage(driver);
+    }
+    public CartPage openCartPage() {
+        clickElement(loginLink);
+        return new CartPage(driver);
     }
 
     public void openTestCasePage() throws Exception {

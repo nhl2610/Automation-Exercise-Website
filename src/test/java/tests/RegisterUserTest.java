@@ -18,8 +18,8 @@ public class RegisterUserTest extends BaseTest {
     String name = "nhl13";
     String emailAddress = "nhl13@gmail.com";
 
-    String registerName = "nhl1";
-    String registerEmailAddress = "nhl11@gmail.com";
+    String registeredName = "nhl1";
+    String registeredEmailAddress = "nhl11@gmail.com";
 
     @Test
     public void registerUser() throws InterruptedException {
@@ -59,7 +59,6 @@ public class RegisterUserTest extends BaseTest {
         }
         */
 
-        driver.switchTo().defaultContent();
         homePage.usernameIsDisplay();
 
         deleteAccountPage = homePage.deleteAccount();
@@ -76,7 +75,7 @@ public class RegisterUserTest extends BaseTest {
 
         loginPage = homePage.openLoginPage();
 
-        loginPage.signUp(registerName,registerEmailAddress);
+        loginPage.signUp(registeredName,registeredEmailAddress);
 
         Assert.assertEquals(loginPage.getErrorSignUpMessage(),"Email Address already exist!");
     }
