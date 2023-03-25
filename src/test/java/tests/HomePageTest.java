@@ -8,7 +8,7 @@ import utils.BaseTest;
 public class HomePageTest extends BaseTest {
     HomePage homePage;
     @Test
-    public void verifySubscriptionInHomePage()
+    public void TC10_verifySubscriptionInHomePage()
     {
         homePage = new HomePage(driver);
         Assert.assertTrue(homePage.getFooterTitle().contains("SUBSCRIPTION"));

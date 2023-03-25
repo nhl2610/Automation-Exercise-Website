@@ -77,5 +77,11 @@ public class CartPage extends BasePage {
         return new LoginPage(driver);
     }
 
+    public CheckoutPage goToCheckoutPage()
+    {
+        clickElement(checkoutButton);
+        return new CheckoutPage(driver);
+    }
+
 
 }

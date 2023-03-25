@@ -8,6 +8,7 @@ import pages.DeleteAccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 import utils.BaseTest;
+import utils.Helper;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class LoginTest extends BaseTest {
     HomePage homePage;
     LoginPage loginPage;
     DeleteAccountPage deleteAccountPage;
-
+    Helper helper;
     String email = "nhl10@gmail.com";
     String password = "123456";
 
@@ -34,31 +35,20 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
-    public void loginUserSuccessful() throws InterruptedException {
+    public void TC2_loginUserSuccessful() throws InterruptedException {
         homePage = new HomePage(driver);
-        //https://automationexercise.com/account_created#google_vignette
-        //https://automationexercise.com/#google_vignette
         loginPage = homePage.openLoginPage();
         loginPage.login(email, password);
-
         homePage.usernameIsDisplay();
         Thread.sleep(2000);
-
         deleteAccountPage = homePage.deleteAccount();
-
-        System.out.println(driver.getCurrentUrl());
-        System.out.println(driver.findElements(By.xpath("/html/ins/div/iframe")).size());
-        WebElement iframe = driver.findElement(By.xpath("/html/ins/div/iframe"));
-        driver.switchTo().frame(iframe);
-        driver.findElement(By.id("dismiss-button")).click();
-        driver.switchTo().defaultContent();
-
+        helper.closeGoogleAd();
         deleteAccountPage.deleteAccount();
     }
 
 
     @Test
-    public void loginUserFailed() throws InterruptedException {
+    public void TC3_loginUserFailed() throws InterruptedException {
         homePage = new HomePage(driver);
 
         loginPage = homePage.openLoginPage();

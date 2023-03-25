@@ -22,7 +22,7 @@ public class RegisterUserTest extends BaseTest {
     String registeredEmailAddress = "nhl11@gmail.com";
 
     @Test
-    public void registerUser() throws InterruptedException {
+    public void TC1_registerUser() throws InterruptedException {
         homePage = new HomePage(driver);
 
         loginPage = homePage.openLoginPage();
@@ -69,7 +69,7 @@ public class RegisterUserTest extends BaseTest {
     }
 
     @Test
-    public void registerUserWithExistingEmail()
+    public void TC5_registerUserWithExistingEmail()
     {
         homePage = new HomePage(driver);
 

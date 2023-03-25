@@ -17,7 +17,7 @@ public class ProductTest extends BaseTest {
     Helper helper;
 
     @Test
-    public void verifyAllProductsAndProductDetailPage() throws Exception {
+    public void TC8_verifyAllProductsAndProductDetailPage() throws Exception {
         helper = new Helper(driver);
         //basePage = new BasePage(driver);
         homePage = new HomePage(driver);

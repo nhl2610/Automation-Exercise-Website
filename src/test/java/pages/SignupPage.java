@@ -50,7 +50,7 @@ public class SignupPage extends BasePage {
         }   else clickElement(gender2);
 
         String password = "123456";
-        System.out.println("Password: " + password);
+//        System.out.println("Password: " + password);
         setText(passwordInput,password);
 
         selectOptionByValue(daySelect, Integer.toString(randomNumber(1,30)));

@@ -1,5 +1,6 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.TestCasePage;
@@ -14,6 +15,7 @@ public class TestCasePageTest extends BaseTest {
     public void homepageRedirectToTestCasePage() throws Exception {
         basePage = new BasePage(driver);
         homePage = new HomePage(driver);
-        homePage.openTestCasePage();
+        testCasePage = homePage.openTestCasePage();
+        Assert.assertTrue(testCasePage.getPageTitle().contains("TEST CASES"),"Wrong Page");
     }
 }

@@ -14,7 +14,7 @@ public class ContactTest extends BaseTest {
     ContactPage contactPage;
 
     @Test
-    public void userCanSendContact() throws Exception {
+    public void TC6_userCanSendContact() throws Exception {
         homePage = new HomePage(driver);
         contactPage = homePage.openContactPage();
 

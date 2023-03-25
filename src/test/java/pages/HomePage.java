@@ -37,17 +37,17 @@ public class HomePage extends BasePage {
         return new LoginPage(driver);
     }
     public CartPage openCartPage() {
-        clickElement(loginLink);
+        clickElement(cartLink);
         return new CartPage(driver);
     }
 
-    public void openTestCasePage() throws Exception {
+    public TestCasePage openTestCasePage() throws Exception {
 
         clickElement(testCasePageLink);
         Thread.sleep(2000);
         closeGoogleAd();
         Assert.assertTrue(driver.getCurrentUrl().contains("test_cases"), "Page not match");
-
+        return new TestCasePage(driver);
     }
 
     public ProductPage openProductPage() {

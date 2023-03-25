@@ -61,11 +61,7 @@ public class ProductPage extends BasePage {
         List<WebElement> productsOverlayAdd = driver.findElements(productsOverlayAddButton);
         for (int i=0; i<productsInfoAdd.size(); i++)
         {
-
             if(productsInfoAdd.get(i).getAttribute("data-product-id").equals(productId)) {
-                System.out.println(productsInfoAdd.get(i).getAttribute("data-product-id") + productsInfoAdd.get(i).getAttribute("class"));
-                System.out.println(productsOverlayAdd.get(i).getAttribute("data-product-id") + productsOverlayAdd.get(i).getAttribute("class"));
-
                 hoverAndClick(productsInfoAdd.get(i), productsOverlayAdd.get(i));
             }
         }
