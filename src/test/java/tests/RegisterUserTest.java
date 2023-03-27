@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;
 import utils.BaseTest;
+import utils.Helper;
 
 public class RegisterUserTest extends BaseTest {
 
@@ -14,31 +15,19 @@ public class RegisterUserTest extends BaseTest {
     SignupPage signupPage;
     DeleteAccountPage deleteAccountPage;
     AccountCreatedPage accountCreatedPage;
-
-    String name = "nhl13";
-    String emailAddress = "nhl13@gmail.com";
-
-    String registeredName = "nhl1";
-    String registeredEmailAddress = "nhl11@gmail.com";
-
+    Helper helper;
+    String name = "nhl";
+    String emailAddress = "nhl12@gmail.com";
     @Test
     public void TC1_registerUser() throws InterruptedException {
+        helper = new Helper(driver);
         homePage = new HomePage(driver);
-
         loginPage = homePage.openLoginPage();
-
         signupPage = loginPage.signUp(name,emailAddress);
-
         accountCreatedPage = signupPage.signUp();
         Thread.sleep(2000);
         accountCreatedPage.veryfyAccountCreated();
-
-        System.out.println(driver.findElements(By.xpath("/html/ins/div/iframe")).size());
-        WebElement iframe = driver.findElement(By.xpath("/html/ins/div/iframe"));
-
-        driver.switchTo().frame(iframe);
-        driver.switchTo().frame("ad_iframe");
-        driver.findElement(By.id("dismiss-button")).click();
+        helper.closeGoogleAd();
 /*
         Get element in frame by ID
         List<WebElement> frames = driver.findElements(By.tagName("iframe"));
@@ -60,23 +49,18 @@ public class RegisterUserTest extends BaseTest {
         */
 
         homePage.usernameIsDisplay();
-
         deleteAccountPage = homePage.deleteAccount();
         Thread.sleep(10000);
-
         deleteAccountPage.deleteAccount();
-
     }
-
+    String registeredName = "nhl1";
+    String registeredEmailAddress = "nhl13@gmail.com";
     @Test
     public void TC5_registerUserWithExistingEmail()
     {
         homePage = new HomePage(driver);
-
         loginPage = homePage.openLoginPage();
-
         loginPage.signUp(registeredName,registeredEmailAddress);
-
         Assert.assertEquals(loginPage.getErrorSignUpMessage(),"Email Address already exist!");
     }
 }

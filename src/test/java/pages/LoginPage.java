@@ -13,7 +13,6 @@ public class LoginPage extends BasePage {
     By signupButton = By.xpath("//button[normalize-space()='Signup']");
     By nameSignupInput = By.xpath("//input[@placeholder='Name']");
     By emailSignupInput = By.xpath("//input[@data-qa='signup-email']");
-
     By loginEmailInput = By.xpath("//input[@data-qa='login-email']");
     By loginPasswordInput = By.xpath("//input[@placeholder='Password']");
     By loginButton = By.xpath("//button[normalize-space()='Login']");
@@ -25,7 +24,6 @@ public class LoginPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-
     public SignupPage signUp(String name, String email)
     {
         Assert.assertEquals(getTextByLocator(signUpTile).toLowerCase(),"new user signup!","Tilte Sign Up");
@@ -35,7 +33,6 @@ public class LoginPage extends BasePage {
 
         return new SignupPage(driver);
     }
-
     public void login(String email, String password)
     {
         Assert.assertEquals(getTextByLocator(loginTile).toLowerCase(),"login to your account","Tilte Sign Up");
@@ -43,12 +40,10 @@ public class LoginPage extends BasePage {
         setText(loginPasswordInput,password);
         clickElement(loginButton);
     }
-
     public String getErrorLoginMessage()
     {
         return getTextByLocator(errorLoginMessage);
     }
-
     public String getErrorSignUpMessage()
     {
         return getTextByLocator(errorSignUpMessage);

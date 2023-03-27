@@ -28,5 +28,4 @@ public class PaymentPage extends BasePage {
     {
         return getTextByLocator(alertSucces).contains("Your order has been placed successfully");
     }
-
 }

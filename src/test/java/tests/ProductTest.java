@@ -30,9 +30,7 @@ public class ProductTest extends BaseTest {
         Assert.assertTrue(productDetailPage.getPageTitle().contains("Product Details"));
         Assert.assertTrue(productDetailPage.productDetailIsVisible());
     }
-
     String productSearch = "Polo";
-
     @Test
     public void TC8_userCanSearchProduct() throws InterruptedException {
         helper = new Helper(driver);

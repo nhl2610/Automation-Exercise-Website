@@ -10,11 +10,9 @@ import java.util.List;
 
 public class CartPage extends BasePage {
     WebDriver driver;
-    ProductPage productPage;
     public CartPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
-        productPage = new ProductPage(driver);
     }
 
     By productsLink = By.xpath("//a[contains(@href,'/product_details')]");
@@ -24,24 +22,24 @@ public class CartPage extends BasePage {
     By breadcrumbsLable = By.xpath("//div[@class='breadcrumbs']");
     By checkoutButton = By.xpath("//a[@class='btn btn-default check_out']");
     By registerLoginButton = By.xpath("//u[normalize-space()='Register / Login']");
+    By removeProductButton = By.xpath("//a[@class='cart_quantity_delete']");
 
     public boolean verifyProductInList (String productId)
     {
         boolean flag = false;
-        List<WebElement> listProductLink = productPage.getAllProductByLocator(productsLink);
+        List<WebElement> listProductLink = driver.findElements(productsLink);
         for (WebElement link : listProductLink)
         {
             if(link.getAttribute("href").contains(productId)) flag = true;
         }
         return flag;
     }
-
     public boolean verifyTotalPrice()
     {
         boolean flag = true;
-        List<WebElement> listProductPrice = productPage.getAllProductByLocator(productsPrice);
-        List<WebElement> listProductQuantity = productPage.getAllProductByLocator(productsQuantity);
-        List<WebElement> listProductTotal = productPage.getAllProductByLocator(productsTotalPrice);
+        List<WebElement> listProductPrice = driver.findElements(productsPrice);
+        List<WebElement> listProductQuantity = driver.findElements(productsQuantity);
+        List<WebElement> listProductTotal = driver.findElements(productsTotalPrice);
         for(int i=0; i<listProductPrice.size(); i++)
         {
             int price = Integer.parseInt(listProductPrice.get(i).getText().substring(4));
@@ -50,13 +48,11 @@ public class CartPage extends BasePage {
             System.out.println(price + " * " + quantity + " = " + total);
             if(price*quantity != total) return false;
         }
-
         return flag;
     }
-
     public String getQuantityOfProduct(String productId) {
-        List<WebElement> listProductQuantity = productPage.getAllProductByLocator(productsQuantity);
-        List<WebElement> listProductLink = productPage.getAllProductByLocator(productsLink);
+        List<WebElement> listProductQuantity = driver.findElements(productsQuantity);
+        List<WebElement> listProductLink = driver.findElements(productsLink);
         for (int i = 0; i < listProductQuantity.size(); i++) {
             System.out.println(listProductLink.get(i).getAttribute("href").substring(47));
             if (listProductLink.get(i).getAttribute("href").substring(47).equals(productId))
@@ -64,24 +60,27 @@ public class CartPage extends BasePage {
         }
         return "0";
     }
-
     public boolean verifyThatCartPageIsDisplayed()
     {
         return isDisplayed(breadcrumbsLable);
     }
-
     public LoginPage goToLoginPage()
     {
         clickElement(checkoutButton);
         clickElement(registerLoginButton);
         return new LoginPage(driver);
     }
-
     public CheckoutPage goToCheckoutPage()
     {
         clickElement(checkoutButton);
         return new CheckoutPage(driver);
     }
-
+    public void removeFirstProduct()
+    {
+        clickElement(removeProductButton);
+    }
+    public boolean verifyCartEmpty(){
+        return driver.findElements(removeProductButton).size() == 0;
+    }
 
 }

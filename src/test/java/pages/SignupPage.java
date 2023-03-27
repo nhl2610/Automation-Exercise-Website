@@ -39,47 +39,35 @@ public class SignupPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-
     public AccountCreatedPage signUp()
     {
         Assert.assertEquals(getTextByLocator(title).toLowerCase(),("Enter Account Information").toLowerCase(),"Title");
-
-        if(randomNumber(1,2) == 1)
+        int gender = randomNumber(1,2);
+        if(gender == 1)
         {
             clickElement(gender1);
         }   else clickElement(gender2);
-
         String password = "123456";
 //        System.out.println("Password: " + password);
         setText(passwordInput,password);
-
         selectOptionByValue(daySelect, Integer.toString(randomNumber(1,30)));
         selectOptionByValue(monthSelect, Integer.toString(randomNumber(1,11)));
         selectOptionByValue(yearSelect, Integer.toString(randomNumber(1900, Year.now().getValue())));
-
         clickElement(newletterCheckbox);
         clickElement(optinCheckbox);
-
         setText(firstname,generatingRandomString(16));
         setText(lastname,generatingRandomString(16));
         setText(company,generatingRandomString(16));
         setText(address1,generatingRandomString(16));
         setText(address2,generatingRandomString(16));
-
         selectOptionByIndex(countrySelect,randomNumber(1,7));
-
         setText(state,generatingRandomString(16));
         setText(city,generatingRandomString(16));
-        setText(zipcode,generatingRandomString(16));
-        setText(mobilenumber,generatingRandomString(16));
-
+        setText(zipcode,randomNumberString(6));
+        setText(mobilenumber,randomNumberString(10));
         clickElement(createButton);
 
         return new AccountCreatedPage(driver);
     }
-
-
-
-
 
 }

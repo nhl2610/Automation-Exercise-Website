@@ -7,7 +7,6 @@ import utils.BasePage;
 
 public class AccountCreatedPage extends BasePage {
     private WebDriver driver;
-
     By title = By.cssSelector(".title.text-center b");
     By continueButton = By.cssSelector(".btn.btn-primary");
 
@@ -16,7 +15,6 @@ public class AccountCreatedPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-
     public void veryfyAccountCreated()
     {
         Assert.assertEquals(getTextByLocator(title).toLowerCase(), ("ACCOUNT CREATED!").toLowerCase());

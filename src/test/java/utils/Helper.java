@@ -18,24 +18,23 @@ public class Helper {
         Random rand = new Random();
         return rand.nextInt(high-low) + low;
     }
-
     public String generatingRandomString(int length) {
 //        boolean useLetters = true;
 //        boolean useNumbers = false;
-//        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
-
         return RandomStringUtils.random(length,true, true);
     }
 
+    public String randomNumberString(int length) {
+        boolean useLetters = false;
+        boolean useNumbers = true;
+        return RandomStringUtils.random(length,useLetters, useNumbers);
+    }
     public void closeGoogleAd()
     {
         if(driver.getCurrentUrl().contains("#google_vignette"))
         {
-            //System.out.println(driver.findElements(By.xpath("/html/ins/div/iframe")).size());
             WebElement iframe = driver.findElement(By.xpath("/html/ins/div/iframe"));
-
             driver.switchTo().frame(iframe);
-
             if (driver.findElements(By.id("dismiss-button")).size() > 0) {
                 driver.findElement(By.id("dismiss-button")).click();
             } else {

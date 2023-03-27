@@ -16,7 +16,7 @@ public class CartTest extends BaseTest {
     ProductDetailPage productDetailPage;
     Helper helper;
     @Test
-    public void TC12_addProductsToCart () throws Exception
+    public void TC12_addProductsToCart ()
     {
         helper =new Helper(driver);
         homePage = new HomePage(driver);
@@ -31,7 +31,6 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(cartPage.verifyTotalPrice());
 
     }
-
     @Test
     public void TC13_verifyProductQuantityInCart()
     {
@@ -45,5 +44,15 @@ public class CartTest extends BaseTest {
         cartPage = productDetailPage.clickViewCartButton();
         System.out.println(productId);
         Assert.assertEquals(cartPage.getQuantityOfProduct(productId),"4","Product quantity is not true");
+    }
+    @Test
+    public void TC17_removeProductsFromCart() throws InterruptedException {
+        homePage = new HomePage(driver);
+        homePage.addAnyProductToCart();
+        cartPage = homePage.openCartPage();
+        Assert.assertTrue(cartPage.verifyThatCartPageIsDisplayed(),"Cart Page is not displayed");
+        cartPage.removeFirstProduct();
+        Thread.sleep(2000);
+        Assert.assertTrue(cartPage.verifyCartEmpty(),"Cart Page is empty");
     }
 }

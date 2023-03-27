@@ -7,7 +7,6 @@ import utils.BasePage;
 
 public class DeleteAccountPage extends BasePage {
     WebDriver driver;
-
     By title = By.cssSelector(".title.text-center b");
     By continueButton = By.cssSelector(".btn.btn-primary");
 
@@ -16,7 +15,6 @@ public class DeleteAccountPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-
     public void deleteAccount()
     {
         Assert.assertEquals(getTextByLocator(title).toUpperCase(),"ACCOUNT DELETED!");

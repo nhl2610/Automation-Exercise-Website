@@ -22,18 +22,6 @@ public class LoginTest extends BaseTest {
 
     String emailInvalid = "nhl10zvg@gmail.com";
     String passwordInvalid = "123456";
-
-    @Test(enabled = false)
-    public void tessst()
-    {
-        driver.get("https://www.automationexercise.com/products");
-        List<WebElement> list = driver.findElements(By.xpath("//a[contains(@href,'/product_details')]"));
-        for (WebElement element : list) {
-
-        System.out.println(element.getAttribute("href"));
-        }
-    }
-
     @Test
     public void TC2_loginUserSuccessful() throws InterruptedException {
         homePage = new HomePage(driver);
@@ -45,8 +33,6 @@ public class LoginTest extends BaseTest {
         helper.closeGoogleAd();
         deleteAccountPage.deleteAccount();
     }
-
-
     @Test
     public void TC3_loginUserFailed() throws InterruptedException {
         homePage = new HomePage(driver);

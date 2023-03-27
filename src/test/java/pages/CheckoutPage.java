@@ -9,6 +9,7 @@ public class CheckoutPage extends BasePage {
     WebDriver driver;
     By descriptionTextarea = By.xpath("//textarea[@name='message']");
     By placeOrderButton = By.xpath("//a[@class='btn btn-default check_out']");
+
     public CheckoutPage(WebDriver driver) {
         super(driver);
         this.driver = driver;

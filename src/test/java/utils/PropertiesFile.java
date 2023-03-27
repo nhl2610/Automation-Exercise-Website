@@ -42,7 +42,6 @@ public class PropertiesFile {
             System.out.println(exp.getCause());
             exp.printStackTrace();
         }
-
         String value = null;
         try {
             //get values from properties file

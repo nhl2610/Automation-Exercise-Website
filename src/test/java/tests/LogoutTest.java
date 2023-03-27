@@ -8,10 +8,8 @@ import utils.BaseTest;
 public class LogoutTest extends BaseTest {
     HomePage homePage;
     LoginPage loginPage;
-
     String password = "123456";
     String emailAddress = "nhl11@gmail.com";
-
     @Test
     public void TC4_testLogout() throws Exception {
         homePage = new HomePage(driver);

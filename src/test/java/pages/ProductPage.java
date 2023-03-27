@@ -19,31 +19,25 @@ public class ProductPage extends BasePage {
     By viewCartButton = By.xpath("//div[@id='cartModal']//a");
     By productsInfoAddButton = By.xpath("//div[@class='productinfo text-center']/a");
     By productsOverlayAddButton = By.xpath("//div[@class='product-overlay']//a");
+
     public ProductPage  (WebDriver driver)
     {
         super(driver);
         this.driver = driver;
     }
-
     public String getPageTitle()
     {
         return getTextByLocator(pageTitle);
     }
-
     public ProductDetailPage goToFirstProductPage()
     {
         clickElement(firstProduct);
         return new ProductDetailPage(driver);
     }
-
     public void searchProduct(String search)
     {
         setText(searchInput,search);
         clickElement(searchSubmitButton);
-    }
-    public List<WebElement> getAllProductByLocator(By locator)
-    {
-        return driver.findElements(locator);
     }
     public List<String> getAllProductName()
     {
@@ -55,7 +49,7 @@ public class ProductPage extends BasePage {
         }
         return result;
     }
-    public void addProductToCart(String productId) throws Exception
+    public void addProductToCart(String productId)
     {
         List<WebElement> productsInfoAdd = driver.findElements(productsInfoAddButton);
         List<WebElement> productsOverlayAdd = driver.findElements(productsOverlayAddButton);
@@ -65,7 +59,6 @@ public class ProductPage extends BasePage {
                 hoverAndClick(productsInfoAdd.get(i), productsOverlayAdd.get(i));
             }
         }
-
     }
     public void clickContinueShoppingButton(){
         clickElement(continueShoppingButton);
