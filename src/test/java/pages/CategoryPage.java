@@ -19,7 +19,6 @@ public class CategoryPage extends BasePage {
         super(driver);
         this.driver = driver;
     }
-
     public boolean verifyThatCategoryAreVisibleOnLeft() {
         Point location = driver.findElement(leftSidebarTitle).getLocation();
         int x = driver.manage().window().getSize().width;
