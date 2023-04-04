@@ -12,7 +12,7 @@ public class TestCasePageTest extends BaseTest {
     TestCasePage testCasePage;
     BasePage basePage;
     @Test
-    public void homepageRedirectToTestCasePage() throws Exception {
+    public void TC7_homepageRedirectToTestCasePage() throws Exception {
         basePage = new BasePage(driver);
         homePage = new HomePage(driver);
         testCasePage = homePage.openTestCasePage();

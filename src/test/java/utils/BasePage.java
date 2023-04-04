@@ -77,6 +77,7 @@ public class BasePage extends Helper {
         }
     }
     public void hoverAndClick(WebElement elementToHover, WebElement elementToClick){
+        wait.until(ExpectedConditions.visibilityOf(elementToHover));
         js.executeScript("arguments[0].scrollIntoView(true);", elementToHover);
         action.moveToElement(elementToHover).build().perform();
         wait.until(ExpectedConditions.elementToBeClickable(elementToClick));

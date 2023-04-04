@@ -19,7 +19,6 @@ public class LoginTest extends BaseTest {
     Helper helper;
     String email = "nhl10@gmail.com";
     String password = "123456";
-
     String emailInvalid = "nhl10zvg@gmail.com";
     String passwordInvalid = "123456";
     @Test

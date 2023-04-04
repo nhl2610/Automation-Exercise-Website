@@ -23,25 +23,11 @@ public class ProductTest extends BaseTest {
         homePage = new HomePage(driver);
         productPage = homePage.openProductPage();
         Thread.sleep(2000);
-        if(driver.getCurrentUrl().contains("#google_vignette"))
-            helper.closeGoogleAd();
+        helper.closeGoogleAd();
         Assert.assertTrue(productPage.getPageTitle().contains("ALL PRODUCTS"),"Product Page Title");
         productDetailPage = productPage.goToFirstProductPage();
         Assert.assertTrue(productDetailPage.getPageTitle().contains("Product Details"));
         Assert.assertTrue(productDetailPage.productDetailIsVisible());
     }
-    String productSearch = "Polo";
-    @Test
-    public void TC8_userCanSearchProduct() throws InterruptedException {
-        helper = new Helper(driver);
-        //basePage = new BasePage(driver);
-        homePage = new HomePage(driver);
-        productPage = homePage.openProductPage();
-        Thread.sleep(2000);
-        if(driver.getCurrentUrl().contains("#google_vignette"))
-            helper.closeGoogleAd();
-        Assert.assertTrue(productPage.getPageTitle().contains("ALL PRODUCTS"),"Product Page Title");
-        productPage.searchProduct(productSearch);
-        Assert.assertTrue(productPage.verifyProductList(productSearch),"Product not match!");
-    }
+
 }

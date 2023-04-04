@@ -34,6 +34,16 @@ public class CartPage extends BasePage {
         }
         return flag;
     }
+    public boolean verifyProductNameList (String productName)
+    {
+        boolean flag = true;
+        List<WebElement> listProductLink = driver.findElements(productsLink);
+        for (WebElement link : listProductLink)
+        {
+            if(!link.getText().contains(productName)) flag = false;
+        }
+        return flag;
+    }
     public boolean verifyTotalPrice()
     {
         boolean flag = true;
@@ -77,7 +87,16 @@ public class CartPage extends BasePage {
     }
     public void removeFirstProduct()
     {
-        clickElement(removeProductButton);
+        List<WebElement> list = driver.findElements(removeProductButton);
+        list.get(0).click();
+    }
+    public void removeAllProduct()
+    {
+        List<WebElement> list = driver.findElements(removeProductButton);
+        for (WebElement element : list)
+        {
+            element.click();
+        }
     }
     public boolean verifyCartEmpty(){
         return driver.findElements(removeProductButton).size() == 0;

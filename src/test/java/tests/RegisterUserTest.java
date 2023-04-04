@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.*;
 import utils.BaseTest;
 import utils.Helper;
+import utils.PropertiesFile;
 
 public class RegisterUserTest extends BaseTest {
 
@@ -16,6 +17,7 @@ public class RegisterUserTest extends BaseTest {
     DeleteAccountPage deleteAccountPage;
     AccountCreatedPage accountCreatedPage;
     Helper helper;
+    PropertiesFile propertiesFile;
     String name = "nhl";
     String emailAddress = "nhl12@gmail.com";
     @Test
@@ -28,39 +30,19 @@ public class RegisterUserTest extends BaseTest {
         Thread.sleep(2000);
         accountCreatedPage.veryfyAccountCreated();
         helper.closeGoogleAd();
-/*
-        Get element in frame by ID
-        List<WebElement> frames = driver.findElements(By.tagName("iframe"));
-        Switch to frame with element
-        driver.switchTo().frame(frame1);
-        Check button X or Close displays
-        for(int i=0; i<frames.size(); i++)
-        {
-            driver.switchTo().frame(i);
-            List<WebElement> checkButtonX = driver.findElements(By.xpath("//div[@id='dismiss-button']"));
-            System.out.println("checkButtonX: " + checkButtonX.size());
-            if (checkButtonX.size() > 0) {
-                driver.findElement(By.xpath("//div[@id='dismiss-button']")).click();
-                driver.switchTo().defaultContent();
-                break;
-            }
-            driver.switchTo().defaultContent();
-        }
-        */
-
         homePage.usernameIsDisplay();
         deleteAccountPage = homePage.deleteAccount();
         Thread.sleep(10000);
         deleteAccountPage.deleteAccount();
     }
-    String registeredName = "nhl1";
-    String registeredEmailAddress = "nhl13@gmail.com";
     @Test
     public void TC5_registerUserWithExistingEmail()
     {
+
+        String emailAddress = propertiesFile.getPropValue("/src/test/resources/testdata/user.properties","email");
         homePage = new HomePage(driver);
         loginPage = homePage.openLoginPage();
-        loginPage.signUp(registeredName,registeredEmailAddress);
+        loginPage.signUp("nhl",emailAddress);
         Assert.assertEquals(loginPage.getErrorSignUpMessage(),"Email Address already exist!");
     }
 }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2023-04-04T15:04:59 ICT" name="Suite" finished-at="2023-04-04T15:05:34 ICT" duration-ms="34478">
+    <groups>
+    </groups>
+    <test started-at="2023-04-04T15:04:59 ICT" name="test" finished-at="2023-04-04T15:05:34 ICT" duration-ms="34478">
+      <class name="tests.SearchProductTest">
+        <test-method is-config="true" signature="startDriver()[pri:0, instance:tests.SearchProductTest@5542c4ed]" started-at="2023-04-04T15:04:53 ICT" name="startDriver" finished-at="2023-04-04T15:04:59 ICT" duration-ms="6822" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- startDriver -->
+        <test-method signature="TC20_searchProductsAndVerifyCartAfterLogin()[pri:0, instance:tests.SearchProductTest@5542c4ed]" started-at="2023-04-04T15:05:00 ICT" name="TC20_searchProductsAndVerifyCartAfterLogin" finished-at="2023-04-04T15:05:34 ICT" duration-ms="34442" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- TC20_searchProductsAndVerifyCartAfterLogin -->
+        <test-method is-config="true" signature="tearsDown()[pri:0, instance:tests.SearchProductTest@5542c4ed]" started-at="2023-04-04T15:05:34 ICT" name="tearsDown" finished-at="2023-04-04T15:05:36 ICT" duration-ms="2339" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearsDown -->
+      </class> <!-- tests.SearchProductTest -->
+    </test> <!-- test -->
+  </suite> <!-- Suite -->
+</testng-results>

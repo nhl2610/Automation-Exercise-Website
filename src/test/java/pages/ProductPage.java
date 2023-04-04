@@ -11,6 +11,7 @@ import java.util.List;
 public class ProductPage extends BasePage {
     WebDriver driver;
     By pageTitle = By.cssSelector(".title.text-center");
+    By cartLink = By.xpath("//a[@href='/view_cart']");
     By firstProduct = By.cssSelector("a[href='/product_details/1']");
     By searchInput = By.xpath("//input[@id='search_product']");
     By searchSubmitButton = By.xpath("//button[@id='submit_search']");
@@ -33,6 +34,10 @@ public class ProductPage extends BasePage {
     {
         clickElement(firstProduct);
         return new ProductDetailPage(driver);
+    }
+    public CartPage openCartPage() {
+        clickElement(cartLink);
+        return new CartPage(driver);
     }
     public void searchProduct(String search)
     {
@@ -58,6 +63,16 @@ public class ProductPage extends BasePage {
             if(productsInfoAdd.get(i).getAttribute("data-product-id").equals(productId)) {
                 hoverAndClick(productsInfoAdd.get(i), productsOverlayAdd.get(i));
             }
+        }
+    }
+    public void addAllProductToCart()
+    {
+        List<WebElement> productsInfoAdd = driver.findElements(productsInfoAddButton);
+        List<WebElement> productsOverlayAdd = driver.findElements(productsOverlayAddButton);
+        for (int i=0; i<productsInfoAdd.size(); i++)
+        {
+            hoverAndClick(productsInfoAdd.get(i), productsOverlayAdd.get(i));
+            clickElement(continueShoppingButton);
         }
     }
     public void clickContinueShoppingButton(){

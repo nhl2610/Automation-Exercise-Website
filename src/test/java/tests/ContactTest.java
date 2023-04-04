@@ -22,9 +22,4 @@ public class ContactTest extends BaseTest {
         Assert.assertTrue(contactPage.getAlertStatus().contains("Success! Your details have been submitted successfully"));
         contactPage.goToHomePage();
     }
-    @Test
-    public void test()
-    {
-        driver.get("https://www.automationexercise.com/contact_us");
-    }
 }
